@@ -15,13 +15,15 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.4.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<sonar.sources>src/main</sonar.sources>
+		<sonar.tests>src/test</sonar.tests>
 	</properties>
 
 	<dependencies>
@@ -35,6 +37,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<version>3.4.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -46,16 +58,50 @@
 		</plugins>
 	</build>
 
-<distributionManagement>
-    <snapshotRepository>
-      <id>nexus-snapshots</id>
-      <url>http://localhost:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
-    <repository>
-      <id>nexus-releases</id>
-      <url>http://localhost:8081/repository/maven-releases/</url>
-    </repository>
-  </distributionManagement>
 
+	<!-- BEGIN: Specific to mapping unit tests and covered code -->
+	<profiles>
+		<profile>
+			<id>coverage-per-test</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<!-- Minimal supported version is 2.4 -->
+						<version>2.13</version>
+						<configuration>
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>org.sonar.java.jacoco.JUnitListener</value>
+								</property>
+							</properties>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.sonarsource.java</groupId>
+					<artifactId>sonar-jacoco-listeners</artifactId>
+					<version>3.8</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+
+	<distributionManagement>
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<url>http://localhost:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+		<repository>
+			<id>nexus-releases</id>
+			<url>http://localhost:8081/repository/maven-releases/</url>
+		</repository>
+	</distributionManagement>
 
 </project>
