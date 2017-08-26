@@ -108,7 +108,8 @@
 			<properties>
 				<wildfly-hostname>199.168.0.5</wildfly-hostname>
 				<wildfly-port>9990</wildfly-port>
-				<!-- <wildfly-username>remoteuser</wildfly-username> <wildfly-password>remotepassword</wildfly-password> -->
+				<wildfly-username>curso</wildfly-username> 
+				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
 
