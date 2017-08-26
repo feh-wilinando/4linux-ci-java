@@ -26,8 +26,8 @@
 		<sonar.tests>src/test</sonar.tests>
 		<wildfly-hostname>192.168.0.5</wildfly-hostname>
 		<wildfly-port>9990</wildfly-port>
-		<!--<wildfly-username>remoteuser</wildfly-username>-->
-		<!--<wildfly-password>remotepassword</wildfly-password>-->
+		<!--<wildfly-username>remoteuser</wildfly-username> -->
+		<!--<wildfly-password>remotepassword</wildfly-password> -->
 	</properties>
 
 	<dependencies>
@@ -60,10 +60,10 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 			<plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.2.0.Final</version>
-            </plugin>
+				<groupId>org.wildfly.plugins</groupId>
+				<artifactId>wildfly-maven-plugin</artifactId>
+				<version>1.2.0.Final</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -100,17 +100,15 @@
 				</dependency>
 			</dependencies>
 		</profile>
-		
-		
+
+
 		<!-- PROFILES PARA O WILDFLY -->
 		<profile>
 			<id>wildfly-remote</id>
 			<properties>
 				<wildfly-hostname>199.168.0.5</wildfly-hostname>
 				<wildfly-port>9990</wildfly-port>
-				<!-- <wildfly-username>remoteuser</wildfly-username>
-				<wildfly-password>remotepassword</wildfly-password>
-				-->
+				<!-- <wildfly-username>remoteuser</wildfly-username> <wildfly-password>remotepassword</wildfly-password> -->
 			</properties>
 		</profile>
 
@@ -120,19 +118,15 @@
 				<wildfly-home>/opt/wildfly </wildfly-home>
 				<wildfly-hostname>127.0.0.1</wildfly-hostname>
 				<wildfly-port>9990</wildfly-port>
-				<!--<wildfly-username>admin</wildfly-username>
-				<wildfly-password>admin</wildfly-password>
-				-->
+				<!--<wildfly-username>admin</wildfly-username> <wildfly-password>admin</wildfly-password> -->
 			</properties>
 		</profile>
+	</profiles>
 
-		<activeProfiles>
+	<!-- <activeProfiles>
 		<activeProfile>wildfly-local</activeProfile>
 		<activeProfile>wildfly-remote</activeProfile>
-	</activeProfiles>
-		
-		
-	</profiles>
+	</activeProfiles> -->
 
 	<distributionManagement>
 		<snapshotRepository>
