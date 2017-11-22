@@ -18,7 +18,7 @@
 
 #Deploy no Wildfly
 
-### mvn clean wildfly:deploy -P dev -DskipTests
+### ./mvn clean wildfly:deploy -P dev -DskipTests
 
 
 
