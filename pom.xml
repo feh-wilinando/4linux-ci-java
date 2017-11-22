@@ -6,7 +6,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>dexter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>Dexter</name>
 	<description>Demo project for Spring Boot</description>
@@ -34,6 +34,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -46,9 +52,35 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.4.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
 		</dependency>
 
 	</dependencies>
@@ -58,6 +90,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<profiles>
+						<profile>dev</profile>
+						<profile>prod</profile>
+					</profiles>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
@@ -65,6 +103,13 @@
 				<version>1.2.0.Final</version>
 			</plugin>
 		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+			</resource>
+		</resources>
+		<finalName>dexter</finalName>
 	</build>
 
 
@@ -108,7 +153,7 @@
 			<properties>
 				<wildfly-hostname>199.168.0.5</wildfly-hostname>
 				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username> 
+				<wildfly-username>curso</wildfly-username>
 				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
@@ -119,16 +164,29 @@
 				<wildfly-home>/opt/wildfly </wildfly-home>
 				<wildfly-hostname>127.0.0.1</wildfly-hostname>
 				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username> 
+				<wildfly-username>curso</wildfly-username>
 				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
+
+		<profile>
+			<id>dev</id>
+			<properties>
+				<activatedProperties>dev</activatedProperties>
+			</properties>
+		</profile>
+		<profile>
+			<id>prod</id>
+			<properties>
+				<activatedProperties>prod</activatedProperties>
+			</properties>
+		</profile>
+
+
 	</profiles>
 
-	<!-- <activeProfiles>
-		<activeProfile>wildfly-local</activeProfile>
-		<activeProfile>wildfly-remote</activeProfile>
-	</activeProfiles> -->
+	<!-- <activeProfiles> <activeProfile>wildfly-local</activeProfile> <activeProfile>wildfly-remote</activeProfile> 
+		</activeProfiles> -->
 
 	<distributionManagement>
 		<snapshotRepository>
