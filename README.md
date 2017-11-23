@@ -10,10 +10,10 @@
 #RUN PACKAGE MODE
 
 ## DEV PROFILE
-### java -Dspring.profiles.active=dev -jar dexter-0.0.1-SNAPSHOT.jar
+### java -Dspring.profiles.active=dev -jar dexter.jar
 
 ## PROD PROFILE
-### java -Dspring.profiles.active=prod -jar dexter-0.0.1-SNAPSHOT.jar
+### java -Dspring.profiles.active=prod -jar dexter.jar
 
 
 #Deploy no Wildfly
