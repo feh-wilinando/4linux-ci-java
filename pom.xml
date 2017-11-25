@@ -101,6 +101,12 @@
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.2.1.Final</version>
+				<configuration>
+					<profiles>
+                        <profile>dev</profile>
+                        <profile>prod</profile>
+                    </profiles>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
