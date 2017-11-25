@@ -6,7 +6,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>dexter</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 
 	<name>Dexter</name>
 	<description>Demo project for Spring Boot</description>
@@ -24,8 +24,8 @@
 		<java.version>1.8</java.version>
 		<sonar.sources>src/main</sonar.sources>
 		<sonar.tests>src/test</sonar.tests>
-		<wildfly-hostname>192.168.0.5</wildfly-hostname>
-		<wildfly-port>9990</wildfly-port>
+		<!-- <wildfly-hostname>192.168.0.5</wildfly-hostname> -->
+		<!-- <wildfly-port>9990</wildfly-port> -->
 		<!--<wildfly-username>remoteuser</wildfly-username> -->
 		<!--<wildfly-password>remotepassword</wildfly-password> -->
 	</properties>
@@ -34,6 +34,12 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
@@ -71,6 +77,12 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -88,7 +100,13 @@
 			<plugin>
 				<groupId>org.wildfly.plugins</groupId>
 				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.2.0.Final</version>
+				<version>1.2.1.Final</version>
+				<configuration>
+                    <hostname>${wildfly-hostname}</hostname>
+                    <port>${wildfly-port}</port>
+                    <!-- <username>${wildfly-username}</username>
+                    <password>${wildfly-password}</password> -->
+                </configuration>
 			</plugin>
 		</plugins>
 		<resources>
@@ -137,39 +155,28 @@
 
 		<!-- PROFILES PARA O WILDFLY -->
 		<profile>
-			<id>wildfly-remote</id>
-			<properties>
-				<wildfly-hostname>199.168.0.5</wildfly-hostname>
-				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password>
-			</properties>
-		</profile>
-
-		<profile>
-			<id>wildfly-local</id>
-			<properties>
-				<wildfly-home>/opt/wildfly </wildfly-home>
-				<wildfly-hostname>127.0.0.1</wildfly-hostname>
-				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password>
-			</properties>
-		</profile>
-
-		<profile>
 			<id>dev</id>
 			<properties>
 				<activatedProperties>dev</activatedProperties>
+				<wildfly-home>/home/debian/wildfly-dev </wildfly-home>
+				<wildfly-hostname>localhost</wildfly-hostname>
+				<wildfly-port>10040</wildfly-port>
+				<wildfly-username>devops</wildfly-username>
+				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
+
 		<profile>
 			<id>prod</id>
 			<properties>
 				<activatedProperties>prod</activatedProperties>
+				<wildfly-home>/home/debian/wildfly-prod </wildfly-home>
+				<wildfly-hostname>localhost</wildfly-hostname>
+				<wildfly-port>10050</wildfly-port>
+				<wildfly-username>devops</wildfly-username>
+				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
-
 
 	</profiles>
 
