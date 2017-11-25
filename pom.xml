@@ -24,8 +24,8 @@
 		<java.version>1.8</java.version>
 		<sonar.sources>src/main</sonar.sources>
 		<sonar.tests>src/test</sonar.tests>
-		<wildfly-hostname>192.168.0.5</wildfly-hostname>
-		<wildfly-port>9990</wildfly-port>
+		<!-- <wildfly-hostname>192.168.0.5</wildfly-hostname>
+		<wildfly-port>9990</wildfly-port> -->
 		<!--<wildfly-username>remoteuser</wildfly-username> -->
 		<!--<wildfly-password>remotepassword</wildfly-password> -->
 	</properties>
@@ -152,10 +152,11 @@
 			<id>dev</id>
 			<properties>
 				<activatedProperties>dev</activatedProperties>
+				<wildfly-home>/home/debian/wildfly-dev </wildfly-home>
 				<wildfly-hostname>localhost</wildfly-hostname>
-				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password>
+				<wildfly-port>10040</wildfly-port>
+				<!-- <wildfly-username>curso</wildfly-username>
+				<wildfly-password>123456</wildfly-password> -->
 			</properties>
 		</profile>
 
@@ -163,11 +164,11 @@
 			<id>prod</id>
 			<properties>
 				<activatedProperties>prod</activatedProperties>
-				<wildfly-home>/opt/wildfly </wildfly-home>
-				<wildfly-hostname>127.0.0.1</wildfly-hostname>
-				<wildfly-port>9990</wildfly-port>
-				<wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password>
+				<wildfly-home>/home/debian/wildfly-prod </wildfly-home>
+				<wildfly-hostname>localhost</wildfly-hostname>
+				<wildfly-port>10050</wildfly-port>
+				<!-- <wildfly-username>curso</wildfly-username>
+				<wildfly-password>123456</wildfly-password> -->
 			</properties>
 		</profile>
 
