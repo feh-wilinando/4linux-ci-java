@@ -161,8 +161,8 @@
 				<wildfly-home>/home/debian/wildfly-dev </wildfly-home>
 				<wildfly-hostname>localhost</wildfly-hostname>
 				<wildfly-port>10040</wildfly-port>
-				<!-- <wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password> -->
+				<wildfly-username>devops</wildfly-username>
+				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
 
@@ -173,8 +173,8 @@
 				<wildfly-home>/home/debian/wildfly-prod </wildfly-home>
 				<wildfly-hostname>localhost</wildfly-hostname>
 				<wildfly-port>10050</wildfly-port>
-				<!-- <wildfly-username>curso</wildfly-username>
-				<wildfly-password>123456</wildfly-password> -->
+				<wildfly-username>devops</wildfly-username>
+				<wildfly-password>123456</wildfly-password>
 			</properties>
 		</profile>
 
