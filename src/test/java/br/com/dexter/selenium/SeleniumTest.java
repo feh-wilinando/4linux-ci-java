@@ -23,7 +23,7 @@ public class SeleniumTest {
 
 	  @Before
 	  public void setUp() throws Exception {
-	    System.setProperty("webdriver.firefox.bin", "/home/gustavo/firefox42/firefox");
+	    System.setProperty("webdriver.firefox.bin", "/opt/firefox42/firefox");
 	    driver = new FirefoxDriver();
 	    baseUrl = "https://www.4linux.com.br/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
