@@ -3,6 +3,7 @@ package br.com.dexter.selenium;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -11,27 +12,34 @@ import org.junit.Test;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class SeleniumTest {
 	private WebDriver driver;
+//	private HtmlUnitDriver driver;
 	  private String baseUrl;
 	  private boolean acceptNextAlert = true;
 	  private StringBuffer verificationErrors = new StringBuffer();
+	  protected static DesiredCapabilities dCaps;
+
 
 	  @Before
 	  public void setUp() throws Exception {
-//	    System.setProperty("webdriver.firefox.bin", "/opt/firefox42/firefox");
-	    driver = new FirefoxDriver();
-	    baseUrl = "https://www.4linux.com.br/";
+		  
+		  DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
+		  capabilities.setCapability("phantomjs.binary.path","/opt/phantomjs/bin/phantomjs");
+		  driver = new PhantomJSDriver(capabilities);
+		  
+		  
+	    baseUrl = "http://www.4linux.com.br/";
 	    driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 	  }
 
 	  @Test
 	  public void testAlou() throws Exception {
-	    driver.get(baseUrl + "/");
+	    driver.get(baseUrl);
 	    driver.findElement(By.linkText("CURSOS")).click();
 	    assertEquals("Cursos Linux, PHP, Segurança e Python | 4Linux", driver.getTitle());
 	    driver.findElement(By.linkText("CONTATO")).click();

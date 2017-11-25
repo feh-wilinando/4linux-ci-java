@@ -24,10 +24,6 @@
 		<java.version>1.8</java.version>
 		<sonar.sources>src/main</sonar.sources>
 		<sonar.tests>src/test</sonar.tests>
-		<!-- <wildfly-hostname>192.168.0.5</wildfly-hostname> -->
-		<!-- <wildfly-port>9990</wildfly-port> -->
-		<!--<wildfly-username>remoteuser</wildfly-username> -->
-		<!--<wildfly-password>remotepassword</wildfly-password> -->
 	</properties>
 
 	<dependencies>
@@ -55,10 +51,18 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+
 		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>3.4.0</version>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+			<version>1.4.1</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
 		</dependency>
 
 		<dependency>
@@ -102,11 +106,9 @@
 				<artifactId>wildfly-maven-plugin</artifactId>
 				<version>1.2.1.Final</version>
 				<configuration>
-                    <hostname>${wildfly-hostname}</hostname>
-                    <port>${wildfly-port}</port>
-                    <!-- <username>${wildfly-username}</username>
-                    <password>${wildfly-password}</password> -->
-                </configuration>
+					<hostname>${wildfly-hostname}</hostname>
+					<port>${wildfly-port}</port>
+				</configuration>
 			</plugin>
 		</plugins>
 		<resources>
@@ -180,9 +182,6 @@
 
 	</profiles>
 
-	<!-- <activeProfiles> <activeProfile>wildfly-local</activeProfile> <activeProfile>wildfly-remote</activeProfile> 
-		</activeProfiles> -->
-
 	<distributionManagement>
 		<snapshotRepository>
 			<id>nexus-snapshots</id>
@@ -193,5 +192,12 @@
 			<url>http://localhost:8081/repository/maven-releases/</url>
 		</repository>
 	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 
 </project>
