@@ -11,7 +11,7 @@ import br.com.dexter.exception.CalcException;
 
 public class Calculadora {
 	
-	private final static Logger LOGGER = Logger.getLogger(Calculadora.class.getName());
+	private static final Logger LOGGER = Logger.getLogger(Calculadora.class.getName());
 
 	
 	private StringBuilder expressao = new StringBuilder();
