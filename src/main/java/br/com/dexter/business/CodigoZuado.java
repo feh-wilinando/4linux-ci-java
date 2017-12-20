@@ -1,36 +1,40 @@
 package br.com.dexter.business;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  * 
  * @author gustavo
  * Classe que precisa logar as ações que são executadas
  */
 public class CodigoZuado {
-
+    private static final Logger LOGGER = Logger.getLogger(CodigoZuado.class.getName());
     private static final String INSTANCIANDO = "Iniciando requisição";
     	
 	public CodigoZuado() {
-		System.out.println("Instanciando a classe");
+		LOGGER.log(Level.INFO, "Instanciando a classe");
 	}
 
 	public void metodoA() {
-		System.out.println(INSTANCIANDO);
-		System.out.println("Dentro do método A");
-		System.out.println("Fim do método A");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método A");
+		LOGGER.log(Level.INFO, "Fim do método A");
 
 	}
 
 	public void metodoB() {
-		System.out.println(INSTANCIANDO);
-		System.out.println("Dentro do método B");
-		System.out.println("Fim do método B");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método B");
+		LOGGER.log(Level.INFO, "Fim do método B");
 
 	}
 
 	public void metodoC() {
-		System.out.println(INSTANCIANDO);
-		System.out.println("Dentro do método C");
-		System.out.println("Fim do método C");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método C");
+		LOGGER.log(Level.INFO, "Fim do método C");
 
 	}
 	
