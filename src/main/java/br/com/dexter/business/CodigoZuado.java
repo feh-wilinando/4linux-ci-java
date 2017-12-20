@@ -12,6 +12,7 @@ import java.util.logging.Logger;
 public class CodigoZuado {
     private static final Logger LOGGER = Logger.getLogger(CodigoZuado.class.getName());
     private static final String INSTANCIANDO = "Iniciando requisição";
+    private static final int DEFAULT_VALUE = 2;
     	
 	public CodigoZuado() {
 		LOGGER.log(Level.INFO, "Instanciando a classe");
@@ -44,12 +45,12 @@ public class CodigoZuado {
 		
 	}
 	
-	public void inverterOrdemLogica() {
-		boolean teste = 1 == 2;
-		if(teste) {
-			//faça alguma coisa
+	public void inverterOrdemLogica(int value) {
+		
+		if(DEFAULT_VALUE == value) {
+			LOGGER.log(Level.INFO, "True");
 		} else {
-			//faça outra coisa
+			LOGGER.log(Level.INFO, "False");
 		}
 	}
 
