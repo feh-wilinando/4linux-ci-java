@@ -1,49 +1,56 @@
 package br.com.dexter.business;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+
 /**
  * 
  * @author gustavo
  * Classe que precisa logar as ações que são executadas
  */
 public class CodigoZuado {
-	
+    private static final Logger LOGGER = Logger.getLogger(CodigoZuado.class.getName());
+    private static final String INSTANCIANDO = "Iniciando requisição";
+    private static final int DEFAULT_VALUE = 2;
+    	
 	public CodigoZuado() {
-		System.out.println("Instanciando a classe");
+		LOGGER.log(Level.INFO, "Instanciando a classe");
 	}
 
 	public void metodoA() {
-		System.out.println("Iniciando requisição");
-		System.out.println("Dentro do método A");
-		System.out.println("Fim do método A");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método A");
+		LOGGER.log(Level.INFO, "Fim do método A");
 
 	}
 
 	public void metodoB() {
-		System.out.println("Iniciando requisição");
-		System.out.println("Dentro do método B");
-		System.out.println("Fim do método B");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método B");
+		LOGGER.log(Level.INFO, "Fim do método B");
 
 	}
 
 	public void metodoC() {
-		System.out.println("Iniciando requisição");
-		System.out.println("Dentro do método C");
-		System.out.println("Fim do método C");
+		LOGGER.log(Level.INFO, INSTANCIANDO);
+		LOGGER.log(Level.INFO, "Dentro do método C");
+		LOGGER.log(Level.INFO, "Fim do método C");
 
 	}
 	
 	public void nullProblem() {
-		StringBuilder s = null;
+		StringBuilder s = new StringBuilder();
 		s.append("teste");
 		
 	}
 	
-	public void inverterOrdemLogica() {
-		boolean teste = 1==1;
-		if(!teste) {
-			//faça alguma coisa
+	public void inverterOrdemLogica(int value) {
+		
+		if(DEFAULT_VALUE == value) {
+			LOGGER.log(Level.INFO, "True");
 		} else {
-			//faça outra coisa
+			LOGGER.log(Level.INFO, "False");
 		}
 	}
 
