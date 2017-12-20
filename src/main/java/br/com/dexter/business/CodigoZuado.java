@@ -39,7 +39,7 @@ public class CodigoZuado {
 	}
 	
 	public void nullProblem() {
-		StringBuilder s = null;
+		StringBuilder s = new StringBuilder();
 		s.append("teste");
 		
 	}
