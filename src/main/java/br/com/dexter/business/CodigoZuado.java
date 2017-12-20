@@ -45,8 +45,8 @@ public class CodigoZuado {
 	}
 	
 	public void inverterOrdemLogica() {
-		boolean teste = 1==1;
-		if(!teste) {
+		boolean teste = 1 == 2;
+		if(teste) {
 			//faça alguma coisa
 		} else {
 			//faça outra coisa
